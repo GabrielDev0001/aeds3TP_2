@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class ArquivoAtor extends Arquivo<Ator>{
     ArvoreBMais <ParIdAtor> indiceNomeAtor;
 
+    ArquivoSeries arqSeries;
+
     public ArquivoAtor() throws Exception {
     super("ator", Ator.class.getConstructor());
 
@@ -64,6 +66,25 @@ public class ArquivoAtor extends Arquivo<Ator>{
         }
         return false;
     }
+
+    public Ator[] readSeriesAtor(int id) throws Exception {
+        arqSeries = new ArquivoSeries();
+        if(id < 0)
+            return null;
+            
+        ArrayList<ParIdId> ptis = arqSeries.indiceIdSerie_IdAtor.read(new ParIdId(id, -1));
+        if(ptis.size()>0) {
+            Ator[] atores = new Ator[ptis.size()];
+            int i=0;
+            
+            for(ParIdId pti: ptis) 
+                atores[i++] = read(pti.getId_agregado());
+            return atores;
+        }
+        else 
+            return null;
+    }
+
 
     public boolean atorExiste(int id) throws Exception{
         Ator a = read(id);

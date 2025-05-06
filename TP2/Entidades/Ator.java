@@ -1,6 +1,6 @@
 package Entidades;
 
-import aed3.Registro;
+import aed3.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -8,6 +8,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class Ator implements Registro {
+
     public int id;
     public String nome;
     public int idSerie;
@@ -52,9 +53,9 @@ public class Ator implements Registro {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
 
-        dos.writeInt(id);
-        dos.writeUTF(nome);
-        dos.writeInt(idSerie);
+        dos.writeInt(this.id);
+        dos.writeUTF(this.nome);
+        dos.writeInt(this.idSerie);
        
         return baos.toByteArray();
     }
@@ -64,8 +65,8 @@ public class Ator implements Registro {
         ByteArrayInputStream bais = new ByteArrayInputStream(b);
         DataInputStream dis = new DataInputStream(bais);
 
-        id = dis.readInt();
-        nome = dis.readUTF();
-        idSerie = dis.readInt();
+        this.id = dis.readInt();
+        this.nome = dis.readUTF();
+        this.idSerie = dis.readInt();
     }
 }

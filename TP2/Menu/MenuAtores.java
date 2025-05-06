@@ -163,7 +163,7 @@ public class MenuAtores {
             System.out.println("Digite o numero(Digite 0 caso não esteja na lista): ");
             int num = console.nextInt();
             console.nextLine();
-            if (num >= 0 && s[num] != null) {
+            if (num > 0 && s[num] != null) {
                 Series[] d = arqSeries.readAtoSeries(num);
                 for (int i = 0; i < d.length; i++) {
                     System.out.println(i + " " + s[i].getNome());

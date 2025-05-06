@@ -88,6 +88,14 @@ public class MenuSeries {
                     if (Serie[i].getNome().equals(nome)) {
                         System.out.println("Serie encontrada");
                         encontrou = true;
+                        System.out.println("Atores que pertecem a serie");
+                        int num = Serie[i].getId();
+                        console.nextLine();
+                        Ator[] d = arqAtores.readSeriesAtor(num);
+                        for (int j = 0; j < d.length; j++) {
+                            System.out.println(j + " " + d[j].getNome());
+                        }
+                        
                     }
                 }   
                 if (!encontrou) {
@@ -273,7 +281,7 @@ public class MenuSeries {
         }
     }
     public void updateAtor() {
-        System.out.println("\nAlteração de Série");
+        System.out.println("\nInclução de Ator");
 
         System.out.print("Nome da Série: ");
         String nome = console.nextLine();
@@ -301,18 +309,18 @@ public class MenuSeries {
                     if (ator != null) {
                 
                             for (int i=0; i < ator.length; i++) {
-                                System.out.println("\t[" + i + "]");
+                                System.out.print("\t[" + i + "]\t");
                                 System.out.println(ator[i].nome);
                             }
                             System.out.print("Digite o número do ator a ser inserido: ");
                             int numa = console.nextInt();
                             console.nextLine();
                         if (numa >= 0 && serie[num] != null) {
-                            boolean alterado = arqSeries.updateAtor(serie[num], ator[numa]);
+                            boolean alterado = arqSeries.updateAtor(serie[num], ator[numa]); 
                             if (alterado) {
                                 System.out.println("Série alterada com sucesso.");
                             } else {
-                                System.out.println("Erro ao alterar a série.");
+                                System.out.println("Erro ao alterar a Ator.");
                             }
                         }
                         }

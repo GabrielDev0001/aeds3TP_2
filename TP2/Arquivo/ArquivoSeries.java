@@ -80,7 +80,6 @@ public class ArquivoSeries extends Arquivo<Series> {
             return null;
     }
 
-
     @Override
     public boolean delete(int id) throws Exception {
         Series s = read(id);   // na superclasse
