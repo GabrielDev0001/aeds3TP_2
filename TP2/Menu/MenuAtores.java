@@ -57,11 +57,11 @@ public class MenuAtores {
     public void incluirAtor() {
         System.out.println("\nInclusão de Ator");
         String nome = "";
-        int IDserie = 0;
 
         System.out.println("\nBusca de Ator");
         String descobre;
         boolean nomeAtorValido;
+        int numSerie = 0;
      
         do {
             System.out.print("\nDigite o nome: ");
@@ -77,9 +77,11 @@ public class MenuAtores {
             for (int i = 0; i < s.length; i++) {
                 System.out.println(i + " " + s[i].getNome());
             }
-            System.out.println("Digite o numero: ");
-            int numSerie = console.nextInt();
-            IDserie = s[numSerie].getId();
+            System.out.println("Digite o numero(Digite 0 caso não esteja na lista): ");
+            numSerie = console.nextInt();
+            if(numSerie != 0){
+                return;
+            }
         }catch (Exception e) {
             System.out.println("Erro ao buscar a Ator: " + e.getMessage());
         }
@@ -94,19 +96,19 @@ public class MenuAtores {
                 System.err.println("O nome do Ator deve ter no mínimo 4 caracteres.");
         } while(nome.length()<4);
 
-        System.out.print("\nConfirma a inclusão do Ator? (S/N) ");
+        System.out.println("\nConfirma a inclusão do Ator? (S/N) ");
         char resp = console.nextLine().charAt(0);
         if(resp=='S' || resp=='s') {
             try {
 
-                Ator c = new Ator(nome, IDserie);
+                Ator c = new Ator(nome);
 
                 arqAtor.criarAtor(c);
                 System.out.println("Ator incluído com sucesso.");
             } catch(Exception e) {
                 System.out.println("Erro do sistema. Não foi possível incluir o ator!");
             }
-        }
+        }else System.out.println("Inclusão cancelada");
     }
 
     public void excluirAtor() {

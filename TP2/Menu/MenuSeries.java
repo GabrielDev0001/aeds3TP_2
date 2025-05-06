@@ -280,6 +280,7 @@ public class MenuSeries {
             e.printStackTrace();
         }
     }
+    
     public void updateAtor() {
         System.out.println("\nInclução de Ator");
 
