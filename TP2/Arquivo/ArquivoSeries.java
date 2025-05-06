@@ -85,6 +85,8 @@ public class ArquivoSeries extends Arquivo<Series> {
         Series s = read(id);   // na superclasse
         if(s!=null) {
             if(super.delete(id)){
+                indiceIdAtor_IdSerie.delete(new ParIdId(-1 , id));
+                indiceIdSerie_IdAtor.delete(new ParIdId(id , -1));
                 indiceNomeSerie.delete(new ParNomeSerieId(s.getNome(), id));
                 return true;
             }
